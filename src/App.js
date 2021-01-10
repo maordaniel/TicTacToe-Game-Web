@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import TableGame from "./components/Table";
+import StartButton from "./components/StartButton";
+import "./App.css"
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [start, setStart] = useState(false);
+    const [turn, setTurn] = useState("Player1");
+
+    const underLineStyle = {
+        fontSize: "2.5rem",
+        fontWeight: "700",
+        borderBottom:" 5px solid #73C663",
+        display: "inline-block",
+        paddingBottom: "10px",
+        fontFamily: "sans-serif",
+    }
+
+    return (
+        <div style={{display: "flex", justifyContent: "center"}}>
+            {start ?
+                <div style={{marginTop:"3em"}}>
+                    <div style={{display:"flex", justifyContent: "space-between", marginBottom:"3em"}}>
+                        <h1 style={turn === "Player1"  ? underLineStyle : null}>Player1</h1>
+                        <h1 style={turn === "Player2" ? underLineStyle : null}>Player2</h1>
+                    </div>
+                    <TableGame turn={turn} setTurn={setTurn}/>
+                </div>
+                :
+                <StartButton setStart={setStart}/>
+            }
+        </div>
+    );
 }
 
 export default App;
