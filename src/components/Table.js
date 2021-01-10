@@ -44,12 +44,12 @@ function TableGame(props) {
             if (props.turn === "Player1"){
                 array = [...player1, square];
                 setPlayer1(array);
-                props.setTurn("Player2");
+                playerTurn = "Player2";
                 document.getElementById(square).innerText = "X";
             }else {
                 array = [...player2, square];
                 setPlayer2(array);
-                props.setTurn("Player1");
+                playerTurn = "Player1";
                 document.getElementById(square).innerText = "O";
             }
 
@@ -62,7 +62,9 @@ function TableGame(props) {
                 setWin(false);
                 return setShow(true);
             }
+
             setFullTable(fullTable + 1);
+            props.setTurn(playerTurn);
     };
 
     return(
