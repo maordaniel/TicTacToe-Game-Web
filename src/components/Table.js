@@ -70,7 +70,7 @@ function TableGame(props) {
     return(
         <div>
             <WinModel winner={props.turn} show={show} win={win}/>
-            <Table striped bordered hover size="xl" style={{ width: "35em", tableLayout:"fixed"}}>
+            <Table striped bordered hover size="xl" style={{ maxWidth: "35em", tableLayout:"fixed"}}>
                 <thead>
                 <tr style={{ height:"10em"}}>
                     <th onClick={() => chooseSquare(0)} id={"0"} style={style.td}></th>
